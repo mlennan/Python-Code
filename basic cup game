@@ -1,11 +1,8 @@
 from random import shuffle
 
-
 def player_guess():
     playerInput = ''
-    print('(     )  (     )  (     )')
-    print('|  1  |  |  2  |  |  3  |')
-    print('|     |  |     |  |     |')
+    print('(     )  (     )  (     )\n|  1  |  |  2  |  |  3  |\n|     |  |     |  |     |')
     while playerInput not in ['1','2','3']:
         playerInput = input('\nIs the ball under cup 1, 2, or 3?')
     return (int(playerInput) - 1)
@@ -15,11 +12,15 @@ def shuffle_cups(givenArray):
     shuffle(givenArray)
     return givenArray
 
+    #return shuffle(givenArray)
+    #this doesn't work because the shuffle makes it return nothing
 
 def check_guess(shuffledArray, guess):
     if shuffledArray[guess] == 'o':
+        print('.     )\n(      \ \n \      \ \n  \      \ \n   \   o')
         print('You found it')
     else:
+        print('.     )\n(      \ \n \      \ \n  \      \ \n   \ ')
         print('That\'s not the ball')
 
 
