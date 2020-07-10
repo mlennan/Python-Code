@@ -3,6 +3,7 @@ from random import shuffle
 def player_guess():
     playerInput = ''
     print('(     )  (     )  (     )\n|  1  |  |  2  |  |  3  |\n|     |  |     |  |     |')
+    #prints three basic ascii cups
     while playerInput not in ['1','2','3']:
         playerInput = input('\nIs the ball under cup 1, 2, or 3?')
     return (int(playerInput) - 1)
