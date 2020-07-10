@@ -1,5 +1,6 @@
 from random import shuffle
 
+
 def player_guess():
     playerInput = ''
     print('(     )  (     )  (     )')
@@ -9,14 +10,17 @@ def player_guess():
         playerInput = input('\nIs the ball under cup 1, 2, or 3?')
     return (int(playerInput) - 1)
 
+
 def shuffle_cups(givenArray):
     shuffle(givenArray)
     return givenArray
+
 
 def check_guess(shuffledArray, guess):
     if shuffledArray[guess] == 'o':
         print('You found it')
     else:
         print('That\'s not the ball')
+
 
 check_guess(shuffle_cups(['','','o']), player_guess())
