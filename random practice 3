@@ -1,0 +1,49 @@
+#function takes two numbers, returns the lesser if both are even, else the greater one
+def lesser_of_two_evends(givenNum1, givenNum2):
+    if (givenNum1 % 2 == 0) and (givenNum2 % 2 == 0):
+        if givenNum1 < givenNum2:
+            return givenNum1
+        return givenNum2
+    if givenNum1 > givenNum2:
+        return givenNum1
+    return givenNum2
+
+
+#function takes a two word string, returns true if both words begin with the same letter
+def animal_crackers(givenString):
+    theWords = givenString.split()
+    if theWords[0][0] == theWords[1][0]:
+        return True
+    return False
+#according to answers "return theWords[0][0] == theWords[1][0]" is valid
+
+
+#given two numbers, return true if their sum is 20 or one of the numbers is
+def make_twenty(givenNum1, givenNum2):
+    if givenNum1 == 20 or givenNum2 == 20:
+        return True
+    if (givenNum1 + givenNum2) == 20:
+        return True
+    return False
+#return (givenNum1 + givenNum2) == 20 or givenNum1 == 20 or givenNum2 == 20 seems too messy to me
+
+
+#capitalize the first and fourth letters in a name
+def old_macdonald(name):
+    nameStart = name[0:3].capitalize()
+    nameLatter = name[3:].capitalize()
+    return nameStart + nameLatter
+
+
+#reverse the order of words in a sentence
+def master_yoda(givenString):
+    splitWords = givenString.split()
+    return ' '.join(splitWords)
+
+
+#given an integer, return true if it is within 10 of 100 or 200
+def almost_there(givenInt):
+    return (abs(givenInt - 100) <= 10) or (abs(givenInt - 200) <= 10)
+
+
+#given a list of integers, return true if two 3's are adjacent
