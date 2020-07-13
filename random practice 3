@@ -1,3 +1,10 @@
+#   Problems are from this link
+#   https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/03-Methods%20and%20Functions/03-Function%20Practice%20Exercises.ipynb
+#
+#   Answers were given and consulted after a finished program
+#   https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/03-Methods%20and%20Functions/04-Function%20Practice%20Exercises%20-%20Solutions.ipynb
+
+
 #function takes two numbers, returns the lesser if both are even, else the greater one
 def lesser_of_two_evends(givenNum1, givenNum2):
     if (givenNum1 % 2 == 0) and (givenNum2 % 2 == 0):
@@ -47,3 +54,10 @@ def almost_there(givenInt):
 
 
 #given a list of integers, return true if two 3's are adjacent
+def find_33(givenList):
+    previous = 0
+    for number in givenList:
+        if number == 3 and previous == 3:
+            return True
+        previous = number
+    return False
