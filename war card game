@@ -1,0 +1,93 @@
+# The war card game, rules are given here
+# https://en.wikipedia.org/wiki/War_(card_game)
+import random
+
+
+#Card
+class Card:
+    def __init__(self, suite, number):
+        self.suite = suite
+        self.number = number
+
+
+    def __lt__ (self, other):
+        if self.number < other.number:
+            return True
+        return False
+    def __le__ (self, other):
+        if self.number <= other.number:
+            return True
+        return False
+    def __eq__ (self, other):
+        if self.number == other.number:
+            return True
+        return False
+    def __ne__ (self, other):
+        if self.number != other.number:
+            return True
+        return False
+    def __ge__ (self, other):
+        if self.number >= other.number:
+            return True
+        return False
+    def __gt__ (self, other):
+        if self.number > other.number:
+            return True
+        return False
+    def __str__(self):
+        return f'Sui:{self.suite}, N:{self.number}'
+
+
+#main
+cardList = []
+for suite in range(1,5):
+    for number in range (1,14):
+        cardList.append(Card(suite, number))
+random.shuffle(cardList)
+deckOne = []
+deckTwo = []
+for card in range(0,26):
+    deckOne.append(cardList.pop())
+for card in range(0,26):
+    deckTwo.append(cardList.pop())
+
+while len(deckOne)>0 and len(deckTwo)>0:
+    oneWon = False
+    twoWon = False
+    cardOne = deckOne.pop(0)
+    cardTwo = deckTwo.pop(0)
+    winningPile = [cardOne,cardTwo]
+    if cardOne > cardTwo:
+        oneWon = True
+        twoWon = False
+    elif cardOne < cardTwo:
+        twoWon = True
+        oneWon = False
+    else:  #it's a tie
+        while not oneWon and not twoWon:
+            winningPile = winningPile + deckOne[0:4]
+            del deckOne[0:3]
+            if len(deckOne) == 0:
+                twoWon = True
+                break
+            cardOne = deckOne.pop(0)
+            winningPile = winningPile + deckTwo[0:4]
+            del deckOne[0:3]
+            if len(deckTwo) == 0:
+                oneWon = True
+                break
+            cardTwo = deckTwo.pop(0)
+            if cardOne > cardTwo:
+                oneWon = True
+            elif cardOne < cardTwo:
+                twoWon = True
+    if oneWon:
+        deckOne = deckOne + winningPile
+    else:
+        deckTwo = deckTwo + winningPile
+        
+print(f'P1{len(deckOne)}, P2{len(deckTwo)}')
+if len(deckOne) > 0:
+    print('Player one is the winner')
+else:
+    print('Player two is the winner')
