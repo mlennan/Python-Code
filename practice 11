@@ -1,0 +1,27 @@
+# Problems are from
+# https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/11-Python%20Generators/02-Iterators%20and%20Generators%20Homework.ipynb
+#
+# Answers are from
+# 
+
+
+
+# Create a generator that generates the squares of numbers up to some number N.
+
+def gensquares(number):
+    for currentNumber in range(number):
+        yield currentNumber**2
+
+for currentNumber in gensquares(10):
+    print(currentNumber)
+    
+    
+# Create a generator that yields "n" random numbers between a low and high number (that are inputs). 
+import random
+
+def random_numbers(low, high, toMake):
+    for currentNum in range(toMake):
+        yield random.randint(low, high)
+        
+for num in random_numbers(1,10,12):
+    print(num)
